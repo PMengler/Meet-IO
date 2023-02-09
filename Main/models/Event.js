@@ -8,19 +8,19 @@ class Event extends Model {}
 Event.init(
   {
     title: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
       },
       description: {
-        type: Sequelize.TEXT,
+        type: DataTypes.TEXT,
         allowNull: false
       },
       start_time: {
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
         allowNull: false
       },
       end_time: {
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
         allowNull: false
       }
     });
