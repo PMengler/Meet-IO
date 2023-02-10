@@ -13,15 +13,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "5.1.0",
+    "connect-session-sequelize": "^7.0.4",
+    "dotenv": "^8.2.0",
     "express": "4.18.2",
     "express-handlebars": "6.0.7",
     "express-session": "1.17.3",
-    "sequelize": "6.28.0",
-    "connect-session-sequelize": "^6.1.1",
     "mysql2": "3.1.1",
-    "dotenv": "^8.2.0",
-    "bcrypt": "5.1.0",
-    "socket.io": "4.6.0",
-    "nodemon": "2.0.20"
+    "nodemon": "2.0.20",
+    "sequelize": "^6.3.5",
+    "socket.io": "4.6.0"
   }
 }
