@@ -1,11 +1,14 @@
 const router = require('express').Router();
+const { User, Event } = require('../models');
 
-const apiRoutes = require('./api');
+router.get('/', async (req, res) => {
+  try {
+    const userData = await User.findAll();
 
-router.use('/api', apiRoutes);
-
-router.get('/', (req, res) => {
-  res.render('index');
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
 module.exports = router;
