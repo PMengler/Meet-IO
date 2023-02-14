@@ -1,0 +1,27 @@
+<div class="chat-container">
+  <header class="chat-header">
+    <h1>Live Chat</h1>
+  </header>
+
+  <main class="chat-main">
+    <div class="chat-side-details">
+      {{! This will hold the list of users }}
+    </div>
+
+    <div class="chat-msg">
+      {{! This will hold the chat messages }}
+    </div>
+  </main>
+
+  <div class="chat-submit-container">
+    <form id="chat-form">
+      <input type="text" placeholder="Chat Message" id="msg" />
+      <button class="btn">Send</button>
+    </form>
+  </div>
+</div>
+
+{{!-- This gives us access to the front end library of socket.io --}}
+<script src="/socket.io/socket.io.js"></script>
+{{!-- Our homepage.js can now access the io methods in the script above --}}
+<script src="js/homepage.js"></script>
