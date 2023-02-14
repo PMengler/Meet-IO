@@ -32,4 +32,5 @@ router.get('/calendar', (req, res) => {
 router.get('/homepage', (req, res) => {
   res.render('homepage', { loggedIn: req.session.loggedIn });
 });
+
 module.exports = router;
