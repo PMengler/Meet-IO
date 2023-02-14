@@ -46,6 +46,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // We want this to run when a user connects (signs in)
 io.on('connection', (socket) => {
   console.log('Socket connection');
+
+  // Socket.io emits a message from the backend via 'message' tag that our front end socket.io server can receive and display
+  socket.emit('message', 'Welcome to Live Chat!')
+
+  // 
 });
 
 app.engine('handlebars', hbs.engine);
