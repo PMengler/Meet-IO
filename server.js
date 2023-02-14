@@ -49,6 +49,8 @@ io.on('connection', (socket) => {
 
   // Socket.io emits a message from the backend via 'message' tag that our front end socket.io server can receive and display
   socket.emit('message', 'Welcome to Live Chat!')
+
+  // 
 });
 
 app.engine('handlebars', hbs.engine);
