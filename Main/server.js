@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const socketio = require('socket.io');
 const session = require('express-session');
 const helpers = require('./utils/helpers');
 const exphbs = require('express-handlebars');
@@ -12,7 +13,11 @@ const routes = require('./controllers');
 const sequelize = require('./config/connection');
 
 const app = express();
-const server = http.createServer(app)
+const server = http.createServer(app);
+
+// Socketio is now utilizing the server directly
+const io = socketio(server);
+
 const PORT = process.env.PORT || 3001;
 
 const sess = {
@@ -37,6 +42,11 @@ const hbs = exphbs.create({ helpers });
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// We want this to run when a user connects (signs in)
+io.on('connection', (socket) => {
+  console.log('Socket connection');
+});
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
