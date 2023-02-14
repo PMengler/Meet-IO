@@ -16,9 +16,12 @@ router.get('/', async (req, res) => {
 
 router.get("/users", async (req, res) => {
   try {
-    const userData = await User.findAll();
+    const userData = await User.findAll({
+      include: {
+        model: Event,
+      },
+    });
     const users = userData.map((user) => user.get({plain: true}));
-    console.log(users)
     res.render("users", {users});
     // res.status(200).json(userData);
   } catch (err) {
