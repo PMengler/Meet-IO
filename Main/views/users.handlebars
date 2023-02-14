@@ -1,0 +1,4 @@
+<h1>users page</h1>
+{{#each users as |user|}}
+<div>{{user.name}}<span>{{format_date user.createdAt}}</span></div>
+{{/each}}
