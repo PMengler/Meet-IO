@@ -5,10 +5,14 @@ const helpers = require('./utils/helpers');
 const exphbs = require('express-handlebars');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+// http is used by express under the hood however we want to access it directly in order to use socket.io
+const http = require('http');
+
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
 
 const app = express();
+const server = http.createServer(app)
 const PORT = process.env.PORT || 3001;
 
 const sess = {
@@ -40,5 +44,6 @@ app.set('view engine', 'handlebars');
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+  // Because we are directly using http and creating a server using express, we have to use server.listen instead of express().listen
+  server.listen(PORT, () => console.log('Now listening'));
 });
