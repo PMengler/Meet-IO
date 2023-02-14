@@ -46,6 +46,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // We want this to run when a user connects (signs in)
 io.on('connection', (socket) => {
   console.log('Socket connection');
+
+  socket.emit('message', 'Welcome to Live Chat!')
 });
 
 app.engine('handlebars', hbs.engine);
