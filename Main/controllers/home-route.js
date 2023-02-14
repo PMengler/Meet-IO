@@ -3,14 +3,17 @@ const { User, Event } = require('../models');
 
 router.get('/', async (req, res) => {
   try {
-    const userData = await User.findAll();
-    res.status(200).json(userData);
+    // req.session.loggedIn = true;
+    if (!req.session.loggedIn) {
+      res.redirect('/login');
+    } else{
+      res.render('homepage');
+    }
   } catch (err) {
     res.status(400).json(err);
   }
-
-
 });
+
 router.get("/users", async (req, res) => {
   try {
     const userData = await User.findAll();
@@ -21,13 +24,10 @@ router.get("/users", async (req, res) => {
   } catch (err) {
     res.status(400).json(err);
   }
-
-
 });
 
 
 router.get('/login', (req, res) => {
-
   res.render('login');
 });
 
