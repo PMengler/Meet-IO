@@ -28,6 +28,11 @@ Event.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
+    date: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
   },
   {
     sequelize,

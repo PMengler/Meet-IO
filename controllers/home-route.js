@@ -13,27 +13,12 @@ router.get('/', async (req, res) => {
   }
 });
 
-// router.get('/users', async (req, res) => {
-//   try {
-//     const userData = await User.findAll({
-//       include: {
-//         model: Event,
-//       },
-//     });
-//     const users = userData.map((user) => user.get({ plain: true }));
-//     res.render('all', { users });
-//     // res.status(200).json(userData);
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-// });
-
-router.get('/login', (req, res) => {
+router.get('/login', async (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');
     return;
   }
-  res.render('login', { loggedIn: req.session.loggedIn });
+  res.render('login');
 });
 
 router.get('/signup', (req, res) => {
@@ -45,6 +30,6 @@ router.get('/calendar', (req, res) => {
 });
 
 router.get('/homepage', (req, res) => {
-  res.render('homepage');
+  res.render('homepage', { loggedIn: req.session.loggedIn });
 });
 module.exports = router;
