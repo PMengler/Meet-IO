@@ -13,21 +13,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// router.get('/users', async (req, res) => {
-//   try {
-//     const userData = await User.findAll({
-//       include: {
-//         model: Event,
-//       },
-//     });
-//     const users = userData.map((user) => user.get({ plain: true }));
-//     res.render('all', { users });
-//     // res.status(200).json(userData);
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-// });
-
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');
@@ -47,4 +32,5 @@ router.get('/calendar', (req, res) => {
 router.get('/homepage', (req, res) => {
   res.render('homepage');
 });
+
 module.exports = router;
