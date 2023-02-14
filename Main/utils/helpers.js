@@ -1,4 +1,6 @@
 module.exports = {
+
+  // Date related methods
   format_date: (date) => {
     return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
   },
@@ -8,6 +10,5 @@ module.exports = {
     const emoji = emojis[index];
 
     return `<span for="img" aria-label="emoji">${emoji}</span>`;
-},
-
+  },
 };
