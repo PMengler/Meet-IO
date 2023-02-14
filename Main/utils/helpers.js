@@ -9,5 +9,10 @@ module.exports = {
 
     return `<span for="img" aria-label="emoji">${emoji}</span>`;
 },
+  next: () => { 
+    currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
+    currentMonth = (currentMonth + 1) % 12;
+    return showCalendar(currentMonth, currentYear);
+},
 
 };

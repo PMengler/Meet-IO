@@ -22,7 +22,7 @@ router.get("/users", async (req, res) => {
       },
     });
     const users = userData.map((user) => user.get({plain: true}));
-    res.render("users", {users});
+    res.render('all', {users});
     // res.status(200).json(userData);
   } catch (err) {
     res.status(400).json(err);
@@ -36,7 +36,7 @@ router.get('/login', (req, res) => {
 
 router.get('/calendar', (req, res) => {
 
-  res.render('calendar');
+  res.render('calendar'); 
 });
 
 module.exports = router;
