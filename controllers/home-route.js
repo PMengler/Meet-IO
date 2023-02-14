@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
     if (!req.session.loggedIn) {
       res.redirect('/login');
     } else{
-      res.render('homepage');
+      res.redirect('/homepage');
     }
   } catch (err) {
     res.status(400).json(err);
@@ -39,4 +39,8 @@ router.get('/calendar', (req, res) => {
   res.render('calendar'); 
 });
 
+
+router.get('/homepage', (req, res) => {
+  res.render('homepage');
+})
 module.exports = router;
