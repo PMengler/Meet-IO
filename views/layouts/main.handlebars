@@ -11,26 +11,29 @@
 </head>
 
 <body>
-  <header>
-    <h1>Welcome to Meet-IO</h1>
-  </header>
+  <div>
+    <header>
+      <h1>Welcome to Meet-IO</h1>
+    </header>
     <nav class="navbar">
       <a href="/">Homepage</a>
       {{#if loggedIn}}
-     <a href="/"><button class="btn" id="logout">Logout</button></a>
+      <a href="/" id="logout">Logout</a>
       {{/if}}
     </nav>
-  <main>
-    <aside>
-      <h2>Let's Get Organized</h2>
-    </aside>
-    <div class="calendar">
-      {{{body}}}
-    </div>
-  </main>
-  {{#if loggedIn}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
+    <main>
+      <aside>
+        <h2>Let's Get Organized</h2>
+      </aside>
+      <div class="calendar">
+        {{{body}}}
+      </div>
+    </main>
+    {{#if loggedIn}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/js/logout.js"></script>
+    {{/if}}
+  </div>
 </body>
 
 </html>
