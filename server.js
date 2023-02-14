@@ -47,6 +47,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 io.on('connection', (socket) => {
   console.log('Socket connection');
 
+  // Socket.io emits a message from the backend via 'message' tag that our front end socket.io server can receive and display
   socket.emit('message', 'Welcome to Live Chat!')
 });
 
