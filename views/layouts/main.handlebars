@@ -13,10 +13,13 @@
 <body>
   <header>
     <h1>Welcome to Meet-IO</h1>
-    <nav>
-      <a href="/">Homepage</a>
-    </nav>
   </header>
+    <nav class="navbar">
+      <a href="/">Homepage</a>
+      {{#if loggedIn}}
+     <a href="/"><button class="btn" id="logout">Logout</button></a>
+      {{/if}}
+    </nav>
   <main>
     <aside>
       <h2>Let's Get Organized</h2>
@@ -25,10 +28,9 @@
       {{{body}}}
     </div>
   </main>
-  {{#if logged_in}}
+  {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}
-</body>
 </body>
 
 </html>
