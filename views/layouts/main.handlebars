@@ -1,40 +1,57 @@
-<!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meet-IO</title>
-  <link rel="stylesheet" type="text/css" href="css/jass.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meet-IO</title>
+    <link rel="stylesheet" type="text/css" href="css/jass.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+  </head>
 
-<body>
-  <div>
-    <header>
-      <h1>Welcome to Meet-IO</h1>
-    </header>
-    <nav class="navbar">
-      <a href="/">Homepage</a>
+  <body>
+    <div>
+      <header>
+        <h1>Welcome to Meet-IO</h1>
+      </header>
+      <nav class="navbar is-fixed-top has-background-dark level-right" aria-label="breadcrumbs">
+        <a class="navbar-burger" id="burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
+
+        <div class="navbar-menu" id="nav-links">
+
+          <!-- mobile menu -->
+          <div class="navbar-end has-background-dark">
+
+            <a href="/" class="navbar-item has-text-white" id="navbar-item" >Homepage</a>
+            {{#if loggedIn}}
+              <a href="/dashboard" class="navbar-item has-text-white" id="navbar-item">Dashboard</a>
+              <a href="/" id="logout" class="navbar-item has-text-white" id="navbar-item">Logout</a>
+            {{/if}}
+          </div>
+        </div>
+      </nav>
+      <main>
+        <aside>
+          <h2>Let's Get Organized</h2>
+        </aside>
+        <div class="calendar">
+          {{{body}}}
+        </div>
+      </main>
       {{#if loggedIn}}
-      <a href="/dashboard">Dashboard</a>
-      <a href="/" id="logout">Logout</a>
+        <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+        ></script>
+        <script src="/js/logout.js"></script>
       {{/if}}
-    </nav>
-    <main>
-      <aside>
-        <h2>Let's Get Organized</h2>
-      </aside>
-      <div class="calendar">
-        {{{body}}}
-      </div>
-    </main>
-    {{#if loggedIn}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="/js/logout.js"></script>
-    {{/if}}
-  </div>
-</body>
-
+    </div>
+  </body>
+<script src="/js/scripts.js"></script>
 </html>
