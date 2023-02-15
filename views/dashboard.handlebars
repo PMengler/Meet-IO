@@ -1,0 +1,20 @@
+<h2>Your Event Dashboard</h2>
+
+<button type="submit" class="btn new-event-button">
+    <a class="link" href="/dashboard/new">Add New Event</a>
+</button>
+
+<section>
+<div>
+{{>calendar }}
+    <div>
+    {{#if events.length}}
+
+        {{#each events as |event|}}
+        {{> events-details event}}
+        {{/each}}
+
+    {{/if}}
+    </div>
+</div>
+</section>
