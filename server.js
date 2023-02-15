@@ -61,7 +61,7 @@ io.on('connection', (socket) => {
 
   // Listening for the chatMessage
   socket.on('chatMessage', (msg) => {
-    console.log(msg);
+    io.emit('message', msg);
   });
   
   // This will broadcast to everyone including the user
