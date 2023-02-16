@@ -1,23 +1,30 @@
-<div class="row justify-space-between-md">
-  <div class="login-card">
+<section class="hero is-primary is-medium">
+  <div class="hero-body has-text-centered">
+    <h1 class="is-size-1 has-text-weight-bold">meetIO</h1>
+    <h2 class="page-title is-size-2">Login {{{get_emoji}}}</h2>
 
-    <h2 class="page-title">Login  {{{get_emoji}}}</h2>
-     
     <form class="form" id="login-form">
       <div class="form-group">
         <label for="username-login">Username:</label>
-        <input class="form-input form control" type="text" id="username-login" autofocus="true"/>
+        <input class="form-input form control" type="text" id="username-login" autofocus="true" />
       </div>
       <div class="form-group">
         <label for="password-login">Password:</label>
-        <input class="form-input form-control" type="password" id="password-login" autofocus="true"/>
+        <input class="form-input form-control" type="password" id="password-login" autofocus="true" />
       </div>
       <div>
         <button type="submit" class="btn btn-primary">Login</button>
-        <button class="btn btn-primary"><a href="/signup">Signup</a></button>
+      </div>
+      <div>
+        <p>Don't have an account yet? Sign up here!</p>
+        <button class="btn btn-primary has-text-centered"><a href="/signup">Signup</a></button>
       </div>
     </form>
-  </div>
+</section>
 </div>
+</div>
+</div>
+</div>
+
 
 <script src="/js/login.js"></script>
