@@ -5,7 +5,7 @@ const socket = io();
 
 // Socket picks up on the backend server via 'message' tag and displays the message from our backend server
 socket.on('message', (msg) => {
-    console.log(`New message: ${msg}`)
+    console.log(msg)
     outputMessage(msg);
 
     // Scroll down function
@@ -23,7 +23,7 @@ chatForm.addEventListener('submit', (event) => {
 
     // Clear the input after send
     event.target.elements.msg.value = '';
-    
+
     //Focus adds a small highlight to the input
     event.target.elements.msg.focus();
 });
