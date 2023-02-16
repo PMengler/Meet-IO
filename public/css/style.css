@@ -1,0 +1,13 @@
+#burger.navbar-burger {
+    color: white;
+}
+
+#burger.navbar-burger:hover {
+    background-color:#f1d9b7;
+    color: black;
+    
+}
+
+#navbar-item:active {
+    background-color:#f1d9b7;
+}
