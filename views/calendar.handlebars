@@ -1,0 +1,64 @@
+    <h2 class="page-title">Calendar  {{{get_emoji}}}</h2>
+    <div class="container block">
+    <div class="card">
+        <h3 class="card-header is-justify-content-space-around is-size-1" id="monthAndYear"></h3>
+        <table class="table is-bordered is-striped is-hoverable is-fullwidth is-size-1" id="calendar">
+            <thead>
+            <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+            </tr>
+            </thead>
+            <tbody id="calendar-body">
+            </tbody>
+        </table>
+
+        <div class="field is-grouped is-grouped-centered is-justify-content-space-around">
+
+            <button class="button is-outlined is-primary" id="previous" onclick="previous()">Previous</button>
+
+            <button class="button is-outlined is-primary" id="next" onclick="next()">Next</button>
+        </div>
+        <br/>
+        <div class="field is-grouped is-grouped-centered">
+            <div class=""> 
+            </div>
+
+            <div class="select is-primary is-rounded is-medium">
+                <select name="month" id="month" onchange="jump()">
+                    <option value=0>Jan</option>
+                    <option value=1>Feb</option>
+                    <option value=2>Mar</option>
+                    <option value=3>Apr</option>
+                    <option value=4>May</option>
+                    <option value=5>Jun</option>
+                    <option value=6>Jul</option>
+                    <option value=7>Aug</option>
+                    <option value=8>Sep</option>
+                    <option value=9>Oct</option>
+                    <option value=10>Nov</option>
+                    <option value=11>Dec</option>
+                </select>
+            </div>
+            <div for="year">
+            </div>
+
+            <div class="select is-primary is-rounded is-medium">
+                <select name="year" id="year" onchange="jump()">
+                <option value=2022>2022</option>
+                <option value=2023>2023</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="./js/scripts.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
