@@ -9,8 +9,12 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 // http is used by express under the hood however we want to access it directly in order to use socket.io
 const http = require('http');
 
+// Adding constant that will represent our chat bot name
+const chatBot = 'Bot-Io';
+
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
+const { messageFormat } = require('./utils/helpers');
 
 const app = express();
 const server = http.createServer(app);
@@ -47,21 +51,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 io.on('connection', (socket) => {
   // Socket.io emits a message from the backend via 'message' tag that our front end socket.io server can receive and display
   // This will emit to the single user that is connecting
-  socket.emit('message', 'Welcome to Live Chat!')
+  socket.emit('message', messageFormat(chatBot, 'Welcome to Live Chat!'))
 
   // This will broadcast when a user signs in
   // Notifies everyone besides the user
-  socket.broadcast.emit('message', 'A user has joined the live chat');
+  socket.broadcast.emit('message', messageFormat(chatBot, 'A user has joined the live chat'));
 
 
   // This will broadcast when a user disconnects
   socket.on('disconnect', () => {
-    io.emit('message', 'A user has left the live chat');
+    io.emit('message', messageFormat(chatBot, 'A user has left the live chat'));
   });
 
   // Listening for the chatMessage
   socket.on('chatMessage', (msg) => {
-    io.emit('message', msg);
+    io.emit('message', messageFormat('Sample User', msg));
   });
   
   // This will broadcast to everyone including the user
