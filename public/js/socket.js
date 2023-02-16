@@ -29,10 +29,11 @@ chatForm.addEventListener('submit', (event) => {
 });
 
 // Output the message to the DOM
+// Since the helper function turns the response into an object, we have to use the key value pairs to show the messages
 outputMessage = (message) => {
     const div = document.createElement('div');
     div.classList.add('message');
-    div.innerHTML = `<p> Sample User </p>
-    <p class='text'> ${message}</p>`
+    div.innerHTML = `<p> ${message.username} ${message.time}</p>
+    <p class='text'> ${message.text}</p>`
     document.querySelector('.chat-msg').appendChild(div);
 }
