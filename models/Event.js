@@ -40,6 +40,13 @@ Event.init(
         key: 'id',
       },
     },
+    // day_id: {
+    //   type: DataTypes.DATE,
+    //   references: {
+    //     model: 'day',
+    //     key: 'id',
+    //   },
+    // },
   },
   {
     sequelize,
