@@ -1,6 +1,6 @@
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-msg');
-const usernamePlacement = document.getElementById('current-user').textContent;
+const joinedUser = document.getElementById('current-user').textContent;
 
 const socket = io();
 
@@ -16,7 +16,11 @@ socket.on('message', (msg) => {
     chatMessages.scrollTop =chatMessages.scrollHeight;
 });
 
-socket.emit('joinedUser', usernamePlacement)
+socket.on('loggedUsers', (users) => {
+    console.log(users);
+});
+
+socket.emit('joinedUser', joinedUser)
 
 // Message submit
 chatForm.addEventListener('submit', (event) => {
