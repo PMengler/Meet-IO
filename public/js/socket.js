@@ -1,28 +1,27 @@
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-msg');
+const usernamePlacement = document.getElementById('username-placement').textContent;
 
 const socket = io();
 
 // User joining
 
 // This is on the right track where the front end can recieve information however it might be a good way to create an endpoint that accesses current user based on session id
-// socket.emit('joinedUser', (username) =>{  
-
-// })
 
 // Socket picks up on the backend server via 'message' tag and displays the message from our backend server
 socket.on('message', (msg) => {
-    console.log(msg)
     outputMessage(msg);
 
     // Scroll down function
     chatMessages.scrollTop =chatMessages.scrollHeight;
 });
 
+socket.emit('joinedUser', usernamePlacement)
+
 // Message submit
 chatForm.addEventListener('submit', (event) => {
     event.preventDefault();
-
+    
     const msg = event.target.elements.msg.value;
 
     // Sending message for server to pick up on

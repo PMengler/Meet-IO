@@ -26,10 +26,11 @@ router.get('/calendar', (req, res) => {
 });
 
 router.get('/homepage', (req, res) => {
-  ///
+  const username = req.session.username;
+  console.log(username);
   res.render('homepage', { 
     loggedIn: req.session.loggedIn,
-    username: User.username,
+    username: username,
    });
 });
 

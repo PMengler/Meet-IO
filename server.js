@@ -6,7 +6,6 @@ const helpers = require('./utils/helpers');
 const exphbs = require('express-handlebars');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-
 // http is used by express under the hood however we want to access it directly in order to use socket.io
 const http = require('http');
 
