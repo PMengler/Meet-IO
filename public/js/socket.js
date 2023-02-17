@@ -1,6 +1,6 @@
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-msg');
-const joinedUser = document.getElementById('current-user').textContent;
+const joinedUser = document.getElementById('current-user').textContent.trim();
 
 const socket = io();
 
@@ -17,7 +17,7 @@ socket.on('message', (msg) => {
 });
 
 socket.on('loggedUsers', (users) => {
-    console.log(users);
+    // console.log(users);
 });
 
 socket.emit('joinedUser', joinedUser)
