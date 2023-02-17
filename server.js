@@ -6,6 +6,7 @@ const helpers = require('./utils/helpers');
 const exphbs = require('express-handlebars');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+
 // http is used by express under the hood however we want to access it directly in order to use socket.io
 const http = require('http');
 
@@ -13,11 +14,9 @@ const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const { messageFormat } = require('./utils/helpers');
 
+
 const app = express();
 const server = http.createServer(app);
-
-// Socketio is now utilizing the server directly
-const io = socketio(server);
 
 const PORT = process.env.PORT || 3001;
 
@@ -44,6 +43,11 @@ const hbs = exphbs.create({ helpers });
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Socketio is now utilizing the server directly
+const io = socketio(server);
+const socketRequest = require('./controllers/api/socket-task-routes')(io)
+app.use('/api/socketRequest', socketRequest);
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
