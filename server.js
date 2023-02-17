@@ -58,6 +58,14 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     io.emit('message', 'A user has left the live chat');
   });
+<<<<<<< HEAD
+=======
+
+  // Listening for the chatMessage
+  socket.on('chatMessage', (msg) => {
+    io.emit('message', msg);
+  });
+>>>>>>> main
   
   // This will broadcast to everyone including the user
   // Like when we send a message

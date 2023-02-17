@@ -21,12 +21,17 @@ Event.init(
       allowNull: false,
     },
     start_time: {
-      type: DataTypes.DATE,
+      type: DataTypes.TIME,
       allowNull: false,
     },
     end_time: {
+      type: DataTypes.TIME,
+      allowNull: false,
+    },
+    date: {
       type: DataTypes.DATE,
       allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
     date: {
       type: DataTypes.DATE,

@@ -11,4 +11,8 @@ module.exports = {
 
     return `<span for="img" aria-label="emoji">${emoji}</span>`;
   },
+<<<<<<< HEAD
 };
+=======
+}
+>>>>>>> main
