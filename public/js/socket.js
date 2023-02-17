@@ -1,6 +1,6 @@
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-msg');
-const usernamePlacement = document.getElementById('username-placement').textContent;
+const usernamePlacement = document.getElementById('current-user').textContent;
 
 const socket = io();
 

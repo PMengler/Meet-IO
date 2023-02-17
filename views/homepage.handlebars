@@ -1,12 +1,13 @@
+  <div>
+    <h2 id="current-user">Current user: {{username}} 
+      </h2>
+  </div>
 <div>
   {{>calendar }}
   <div> 
       {{#each events as |events|}}
       {{> events-details}}
       {{/each}}
-  </div>
-  <div>
-    <h2>{{{online_status}}} 
   </div>
 </div>
   {{> chat-box}}
