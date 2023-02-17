@@ -5,8 +5,8 @@ const usernamePlacement = document.getElementById('username-placement').textCont
 const socket = io();
 
 // User joining
+// This is where I will need to listen to the backend socket that will be emitting a list of active users to then create the list like the function outputMessage()
 
-// This is on the right track where the front end can recieve information however it might be a good way to create an endpoint that accesses current user based on session id
 
 // Socket picks up on the backend server via 'message' tag and displays the message from our backend server
 socket.on('message', (msg) => {
