@@ -1,24 +1,34 @@
 <section class="hero is-primary is-medium">
-  <div class="hero-body has-text-centered">
-    <div class="container"> 
-      <h1 class="page-title is-size-1">Sign Up</h1>
-      <form class="form signup-form" id="signup-form">
-        <div class="form-group">
-          <label for="username-signup">Username:</label>
-          <input class="form-input" type="text" id="username-signup" />
+  <div class="columns">
+    <div class="column is-half">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="page-title is-size-1">Sign Up</h1>
+          <div class="field">
+            <label class="label">Username</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="pick a username">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control has-icons-left">
+              <input class="input" type="email" placeholder="email">
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Password</label>
+            <input class="input" type="text" placeholder="choose a password" />
+          </div>
+          <div class="field">
+            <button class="button is-medium mt-3" type="submit">signup</button>
+          </div>
+          </form>
         </div>
-        <div class="form-group">
-          <label for="email-signup">Email:</label>
-          <input class="form-input form-control" type="email" id="email-signup" />
-        </div>
-        <div class="form-group">
-          <label for="password-signup">Password:</label>
-          <input class="form-input form-control" type="password" id="password-signup" />
-        </div>
-        <div class="form-group">
-          <button class="btn btn-primary form-control" type="submit">signup</button>
-        </div>
-      </form>
+      </div>
     </div>
 
     <script src="/js/signup.js"></script>
