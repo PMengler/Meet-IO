@@ -1,27 +1,32 @@
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-msg');
-const usernamePlacement = document.getElementById('username-placement').textContent;
+const joinedUser = document.getElementById('current-user').textContent.trim();
 
 const socket = io();
 
 // User joining
+// This is where I will need to listen to the backend socket that will be emitting a list of active users to then create the list like the function outputMessage()
 
-// This is on the right track where the front end can recieve information however it might be a good way to create an endpoint that accesses current user based on session id
 
 // Socket picks up on the backend server via 'message' tag and displays the message from our backend server
 socket.on('message', (msg) => {
     outputMessage(msg);
 
     // Scroll down function
-    chatMessages.scrollTop =chatMessages.scrollHeight;
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 });
 
-socket.emit('joinedUser', usernamePlacement)
+socket.on('loggedUsers', (users) => {
+    outputCurrentUserList(users)
+    console.log(users)
+});
+
+socket.emit('joinedUser', joinedUser)
 
 // Message submit
 chatForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    
+
     const msg = event.target.elements.msg.value;
 
     // Sending message for server to pick up on
@@ -39,7 +44,14 @@ chatForm.addEventListener('submit', (event) => {
 outputMessage = (message) => {
     const div = document.createElement('div');
     div.classList.add('message');
-    div.innerHTML = `<p> ${message.username} ${message.time}</p>
-    <p class='text'> ${message.text}</p>`
+    div.innerHTML = `<p>${message.username} ${message.time}</p>
+    <p class='text'>${message.text}</p>`
     document.querySelector('.chat-msg').appendChild(div);
+}
+
+outputCurrentUserList = (users) => {
+    const div = document.createElement('div');
+    div.classList.add('online');
+    div.innerHTML = `<p>${users}</p>`
+    document.querySelector('.online-users').appendChild(div);
 }

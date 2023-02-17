@@ -20,5 +20,8 @@ module.exports = {
       time: moment().format('h:mm a')
     }
   },
+  getValues: (list) => {
+    return list.map(users => users.user)
+  },
   
 }
