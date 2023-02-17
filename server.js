@@ -24,6 +24,7 @@ const io = socketio(server);
 
 const PORT = process.env.PORT || 3001;
 
+// Need to add a user_id on creation of session to identify the user for chat
 const sess = {
   secret: 'Database secret',
   cookie: {
@@ -47,16 +48,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// The key is to grab the current user based off the session id and bounce the data from the front end to the backend
+
 // We want this to run when a user connects (signs in)
 io.on('connection', (socket) => {
-  // Socket.io emits a message from the backend via 'message' tag that our front end socket.io server can receive and display
-  // This will emit to the single user that is connecting
-  socket.emit('message', messageFormat(chatBot, 'Welcome to Live Chat!'))
-
-  // This will broadcast when a user signs in
-  // Notifies everyone besides the user
-  socket.broadcast.emit('message', messageFormat(chatBot, 'A user has joined the live chat'));
-
+  socket.on('joinedUser', () => {
+    socket.emit('message', messageFormat(user.username, 'test welcome'))
+  })
+    // Socket.io emits a message from the backend via 'message' tag that our front end socket.io server can receive and display
+    // This will emit to the single user that is connecting
+    socket.emit('message', messageFormat(chatBot, 'Welcome to Live Chat!'))
+  
+    // This will broadcast when a user signs in
+    // Notifies everyone besides the user
+    socket.broadcast.emit('message', messageFormat(chatBot, `A user has joined the live chat`));
 
   // This will broadcast when a user disconnects
   socket.on('disconnect', () => {
