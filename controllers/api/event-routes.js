@@ -10,11 +10,12 @@ router.get('/', (req, res) => {
   Event.findAll({
     attributes: [
       'id',
-      'title',
+      'event_name',
       'description',
       'start_time',
       'end_time',
       'date',
+      'user_id',
     ],
     include: [
       {
@@ -22,12 +23,12 @@ router.get('/', (req, res) => {
         attributes: ['username'],
       },
     ],
-    include: [
-      {
-        model: Day,
-        attributes: ['id', 'date'],
-      },
-    ],
+    // include: [
+    //   {
+    //     model: Day,
+    //     attributes: ['id', 'date'],
+    //   },
+    // ],
   })
     .then((dbEventData) => res.json(dbEventData.reverse()))
     .catch((err) => {
@@ -42,11 +43,12 @@ router.get('/:id', (req, res) => {
     },
     attributes: [
       'id',
-      'title',
+      'event_name',
       'description',
       'start_time',
       'end_time',
       'date',
+      'user_id',
     ],
     include: [
       {
@@ -74,7 +76,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', mustAuth, (req, res) => {
   Event.create({
-    title: req.body.title,
+    event_name: req.body.event_name,
     description: req.body.description,
     start_time: req.body.start_time,
     end_time: req.body.end_time,
@@ -91,7 +93,7 @@ router.post('/', mustAuth, (req, res) => {
 router.put('/:id', mustAuth, (req, res) => {
   Event.update(
     {
-      title: req.body.title,
+      event_name: req.body.event_name,
       description: req.body.description,
       start_time: req.body.start_time,
       end_time: req.body.end_time,

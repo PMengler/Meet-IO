@@ -11,15 +11,15 @@ const http = require('http');
 
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
+const { messageFormat } = require('./utils/helpers');
+
 
 const app = express();
 const server = http.createServer(app);
 
-// Socketio is now utilizing the server directly
-const io = socketio(server);
-
 const PORT = process.env.PORT || 3001;
 
+// Need to add a user_id on creation of session to identify the user for chat
 const sess = {
   secret: 'Database secret',
   cookie: {
@@ -43,6 +43,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+<<<<<<< HEAD
 // We want this to run when a user connects (signs in)
 io.on('connection', (socket) => {
   // Socket.io emits a message from the backend via 'message' tag that our front end socket.io server can receive and display
@@ -71,6 +72,12 @@ io.on('connection', (socket) => {
   // Like when we send a message
   io.emit();
 });
+=======
+// Socketio is now utilizing the server directly
+const io = socketio(server);
+const socketRequest = require('./controllers/api/socket-task-routes')(io)
+app.use('/api/socketRequest', socketRequest);
+>>>>>>> main
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');

@@ -1,0 +1,52 @@
+<form action="" id="user-input">
+  <input
+    class="input is-large has-text-centered"
+    id="event-date"
+    type="date"
+    placeholder="Event Date"
+  />
+  <input
+    class="input is-large has-text-centered"
+    id="start-time"
+    type="time"
+    placeholder="Start Time"
+  />
+  <input
+    class="input is-large has-text-centered"
+    id="end-time"
+    type="time"
+    placeholder="End Time"
+  />
+    <input
+    class="input is-large has-text-centered"
+    id="event-title"
+    type="text"
+    placeholder="Title"
+  />
+    <input
+    class="input is-large has-text-centered"
+    id="content"
+    type="text"
+    placeholder="Content"
+  />
+</form>
+<button type="submit" id="new-event-submit" class="btn new-event-button">
+  <a class="link" href="">Submit</a>
+</button>
+
+{{!-- <script>
+    document.querySelector("#submit").addEventListener("click", addDetails);
+    function addDetails(){
+        let whereDetails = document.getElementById("whereID");
+        let whatDetails = document.getElementById("whatID");
+        let whoDetails = document.getElementById("whoID");
+        const sql = 'INSERT INTO event (where_details, what_details, who_details) VALUES (start_time, title, description)';
+        const values = [whereDetails, whatDetails, whoDetails];
+        try {
+        const [rows] = await connection.execute(sql, values);
+        console.log('New event added successfully');
+        } catch (error) {
+        console.error('Error inserting event:', error);
+        }
+    }
+</script> --}}
