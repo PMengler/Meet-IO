@@ -71,7 +71,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', mustAuth, (req, res) => {
+router.post('/', (req, res) => {
   Event.create({
     event_name: req.body.event_name,
     description: req.body.description,
