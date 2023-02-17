@@ -1,15 +1,31 @@
 //Google Calendar API Code
 import express from "express";
-import {googleCalendar} from 'googleapi'
+import {googleCalendar} from 'googleapis'
 
 const app = express();
+const apiRoutes = require('./google-api')
+const googleCalendar = new googleCalendar
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || //3000;
+
+app.listen(PORT,() => {
+  console.log('listening on port', PORT);
+});
+
 
 const auth = require('auth');
 const auth = new google.auth.OAuth(
-   process.env.CLIENT_ID,
+  // process.env.CLIENT_ID,
+  // process.env.CLIENT_SECRET
+  // process.env.REDIRECT_URL
 )
+
+app.get("/googleCalendar", (req, res) => {
+   req.url = 
+  )
+
+module.exports = router;
+
 
 /*
  * Create form to request access token from Google's OAuth 2.0 server.
