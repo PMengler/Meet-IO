@@ -15,8 +15,8 @@ Day.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    number: {
-      type: DataTypes.INTEGER,
+    date: {
+      type: DataTypes.DATE,
       allowNull: false,
     },
   },
@@ -25,7 +25,7 @@ Day.init(
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'event',
+    modelName: 'day',
   }
 );
 
