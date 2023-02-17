@@ -22,5 +22,6 @@ module.exports = {
   },
   getValues: (list) => {
     return list.map(users => users.user)
-  }
+  },
+  
 }

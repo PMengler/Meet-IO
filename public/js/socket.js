@@ -13,11 +13,12 @@ socket.on('message', (msg) => {
     outputMessage(msg);
 
     // Scroll down function
-    chatMessages.scrollTop =chatMessages.scrollHeight;
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 });
 
 socket.on('loggedUsers', (users) => {
-    // console.log(users);
+    outputCurrentUserList(users)
+    console.log(users)
 });
 
 socket.emit('joinedUser', joinedUser)
@@ -25,7 +26,7 @@ socket.emit('joinedUser', joinedUser)
 // Message submit
 chatForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    
+
     const msg = event.target.elements.msg.value;
 
     // Sending message for server to pick up on
@@ -43,7 +44,14 @@ chatForm.addEventListener('submit', (event) => {
 outputMessage = (message) => {
     const div = document.createElement('div');
     div.classList.add('message');
-    div.innerHTML = `<p> ${message.username} ${message.time}</p>
-    <p class='text'> ${message.text}</p>`
+    div.innerHTML = `<p>${message.username} ${message.time}</p>
+    <p class='text'>${message.text}</p>`
     document.querySelector('.chat-msg').appendChild(div);
+}
+
+outputCurrentUserList = (users) => {
+    const div = document.createElement('div');
+    div.classList.add('online');
+    div.innerHTML = `<p>${users}</p>`
+    document.querySelector('.online-users').appendChild(div);
 }
