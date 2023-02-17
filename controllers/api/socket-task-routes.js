@@ -13,9 +13,13 @@ module.exports = function async (io) {
     // We want this to run when a user connects (signs in)
     io.on('connection', (socket) => {
         socket.on('joinedUser', (user) => {
-            loggedUsers.push({
-                user: user
-            });
+            if(!getValues(loggedUsers).includes(user)){
+                loggedUsers.push({
+                    user: user
+                });
+            } else {
+                return
+            }
 
             console.log(getValues(loggedUsers));
             socket.emit('message', messageFormat(chatBot, `Welcome to Live Chat ${user}!`));
