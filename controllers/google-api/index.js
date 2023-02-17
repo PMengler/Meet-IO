@@ -14,15 +14,26 @@ app.listen(PORT,() => {
 
 
 const auth = require('auth');
-const auth = new google.auth.OAuth(
+const oauth2Client = new google.auth.OAuth2(
   // process.env.CLIENT_ID,
   // process.env.CLIENT_SECRET
   // process.env.REDIRECT_URL
 )
 
+const scopes = req.url ('https://googleapis.com/auth/calendar')
+
 app.get("/googleCalendar", (req, res) => {
-   req.url = 
-  )
+   req.url = oauth2Client.getAuthUrl({
+    access_type: "offline",
+    scope: scopes,
+   });
+   res.redirect(url);
+});
+
+app.get('/goolge/redirect', (req, res) => {
+  console.log("all green lights");
+});
+
 
 module.exports = router;
 
