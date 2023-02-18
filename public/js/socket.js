@@ -17,8 +17,9 @@ socket.on('message', (msg) => {
 });
 
 socket.on('loggedUsers', (users) => {
-    outputCurrentUserList(users)
-    console.log(users)
+    users.forEach(username => {
+        outputCurrentUserList(username.user);
+    });
 });
 
 socket.emit('joinedUser', joinedUser)

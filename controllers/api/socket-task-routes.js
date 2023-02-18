@@ -21,7 +21,9 @@ module.exports = function async(io) {
                 return
             }
 
-            io.emit('loggedUsers', Object.values(loggedUsers[0]));
+            console.log(Object.values(loggedUsers));
+
+            socket.emit('loggedUsers', loggedUsers);
 
             socket.emit('message', messageFormat(chatBot, `Welcome to Live Chat ${user}!`));
             // Socket.io emits a message from the backend via 'message' tag that our front end socket.io server can receive and display
