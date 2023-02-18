@@ -21,8 +21,6 @@ module.exports = function async(io) {
                 return
             }
 
-            console.log(Object.values(loggedUsers));
-
             // socket.emit('loggedUsers', loggedUsers);
 
             // socket.emit('message', messageFormat(chatBot, `Welcome to Live Chat ${user}!`));
@@ -42,13 +40,8 @@ module.exports = function async(io) {
         })
 
         // This will broadcast when a user disconnects
-        socket.on('disconnect', (user) => {
-            // if (getValues(loggedUsers).includes(user)) {
-                io.emit('message', messageFormat(chatBot, `${user} has left the live chat`));
-            // } else {
-            //     return
-            // }
-            
+        socket.on('disconnect', () => {
+                io.emit('message', messageFormat(chatBot, `A user has left the live chat`));
         });
 
 
