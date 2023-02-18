@@ -43,8 +43,8 @@ module.exports = function async(io) {
 
 
         // Listening for the chatMessage
-        socket.on('chatMessage', (msg) => {
-            io.emit('message', messageFormat('sample', msg));
+        socket.on('chatMessage', (msg, joinedUser) => {
+            io.emit('message', messageFormat(joinedUser, msg));
         });
 
         // This will broadcast to everyone including the user

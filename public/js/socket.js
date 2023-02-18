@@ -31,7 +31,7 @@ chatForm.addEventListener('submit', (event) => {
     const msg = event.target.elements.msg.value;
 
     // Sending message for server to pick up on
-    socket.emit('chatMessage', msg);
+    socket.emit('chatMessage', msg, joinedUser);
 
     // Clear the input after send
     event.target.elements.msg.value = '';
@@ -39,6 +39,7 @@ chatForm.addEventListener('submit', (event) => {
     //Focus adds a small highlight to the input
     event.target.elements.msg.focus();
 });
+
 
 // Output the message to the DOM
 // Since the helper function turns the response into an object, we have to use the key value pairs to show the messages
