@@ -52,8 +52,10 @@ outputMessage = (message) => {
 outputCurrentUserList = (users) => {
     const div = document.createElement('div');
     div.classList.add('online');
-    div.innerHTML = `<p>${users}</p>`
+    div.innerHTML = `<p class="user">${users}</p>`
     document.querySelector('.online-users').appendChild(div);
+
+    
 }
 
 reloadUserList = () => {

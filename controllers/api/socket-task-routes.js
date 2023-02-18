@@ -20,22 +20,17 @@ module.exports = function async(io) {
             } else {
                 return
             }
-
-            // socket.emit('loggedUsers', loggedUsers);
-
-            // socket.emit('message', messageFormat(chatBot, `Welcome to Live Chat ${user}!`));
-            // Socket.io emits a message from the backend via 'message' tag that our front end socket.io server can receive and display
-            // This will emit to the single user that is connecting
-
-            // This will broadcast when a user signs in
-            // Notifies everyone besides the user
-            // socket.broadcast.emit('message', messageFormat(chatBot, `${user} has joined the live chat`));
+            socket.emit('loggedUsers', loggedUsers);
         });
-
+        
         // This will allow for the users to be reprinted on refresh
         socket.on('reloadUsers', (user) => {
             socket.emit('loggedUsers', loggedUsers);
+            // Socket.io emits a message from the backend via 'message' tag that our front end socket.io server can receive and display
+            // This will emit to the single user that is connecting
             socket.emit('message', messageFormat(chatBot, `Welcome to Live Chat ${user}!`));
+            // This will broadcast when a user signs in
+            // Notifies everyone besides the user
             socket.broadcast.emit('message', messageFormat(chatBot, `${user} has joined the live chat`));
         })
 
