@@ -1,12 +1,9 @@
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-msg');
+
 const joinedUser = document.getElementById('current-user').textContent.trim();
 
 const socket = io();
-
-// User joining
-// This is where I will need to listen to the backend socket that will be emitting a list of active users to then create the list like the function outputMessage()
-
 
 // Socket picks up on the backend server via 'message' tag and displays the message from our backend server
 socket.on('message', (msg) => {
@@ -16,6 +13,7 @@ socket.on('message', (msg) => {
     chatMessages.scrollTop = chatMessages.scrollHeight;
 });
 
+// Displays the currently logged in users
 socket.on('loggedUsers', (users) => {
     users.forEach(username => {
         outputCurrentUserList(username.user);
@@ -56,4 +54,8 @@ outputCurrentUserList = (users) => {
     div.classList.add('online');
     div.innerHTML = `<p>${users}</p>`
     document.querySelector('.online-users').appendChild(div);
+}
+
+reloadUserList = () => {
+    socket.emit('reloadUsers', joinedUser)
 }

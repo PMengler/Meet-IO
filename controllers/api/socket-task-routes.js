@@ -23,22 +23,32 @@ module.exports = function async(io) {
 
             console.log(Object.values(loggedUsers));
 
-            socket.emit('loggedUsers', loggedUsers);
+            // socket.emit('loggedUsers', loggedUsers);
 
-            socket.emit('message', messageFormat(chatBot, `Welcome to Live Chat ${user}!`));
+            // socket.emit('message', messageFormat(chatBot, `Welcome to Live Chat ${user}!`));
             // Socket.io emits a message from the backend via 'message' tag that our front end socket.io server can receive and display
             // This will emit to the single user that is connecting
 
             // This will broadcast when a user signs in
             // Notifies everyone besides the user
-            socket.broadcast.emit('message', messageFormat(chatBot, `${user} has joined the live chat`));
+            // socket.broadcast.emit('message', messageFormat(chatBot, `${user} has joined the live chat`));
         });
 
-        //
+        // This will allow for the users to be reprinted on refresh
+        socket.on('reloadUsers', (user) => {
+            socket.emit('loggedUsers', loggedUsers);
+            socket.emit('message', messageFormat(chatBot, `Welcome to Live Chat ${user}!`));
+            socket.broadcast.emit('message', messageFormat(chatBot, `${user} has joined the live chat`));
+        })
 
         // This will broadcast when a user disconnects
         socket.on('disconnect', (user) => {
-            io.emit('message', messageFormat(chatBot, `${user} has left the live chat`));
+            // if (getValues(loggedUsers).includes(user)) {
+                io.emit('message', messageFormat(chatBot, `${user} has left the live chat`));
+            // } else {
+            //     return
+            // }
+            
         });
 
 
