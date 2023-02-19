@@ -1,12 +1,21 @@
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-msg');
+const updateUserList = document.getElementById('update-users');
 const joinedUser = document.getElementById('current-user').textContent.trim();
 
 const socket = io();
 
-// User joining
-// This is where I will need to listen to the backend socket that will be emitting a list of active users to then create the list like the function outputMessage()
+socket.on('welcomeMessage', (msg) => {
+    welcomeMessage(msg);
 
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+});
+
+socket.on('joinedMessage', (msg) => {
+    joinedMessage(msg);
+
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+});
 
 // Socket picks up on the backend server via 'message' tag and displays the message from our backend server
 socket.on('message', (msg) => {
@@ -16,12 +25,18 @@ socket.on('message', (msg) => {
     chatMessages.scrollTop = chatMessages.scrollHeight;
 });
 
+// Displays the currently logged in users
 socket.on('loggedUsers', (users) => {
-    outputCurrentUserList(users)
-    console.log(users)
+    users.forEach(username => {
+        outputCurrentUserList(username.user);
+    });
 });
 
 socket.emit('joinedUser', joinedUser)
+
+socket.on('printNewUser', (user) => {
+    outputCurrentUserList(user);
+})
 
 // Message submit
 chatForm.addEventListener('submit', (event) => {
@@ -30,7 +45,7 @@ chatForm.addEventListener('submit', (event) => {
     const msg = event.target.elements.msg.value;
 
     // Sending message for server to pick up on
-    socket.emit('chatMessage', msg);
+    socket.emit('chatMessage', msg, joinedUser);
 
     // Clear the input after send
     event.target.elements.msg.value = '';
@@ -39,6 +54,11 @@ chatForm.addEventListener('submit', (event) => {
     event.target.elements.msg.focus();
 });
 
+updateUserList.addEventListener('click', () => {
+    const updateNewUserString = document.querySelector('.joined-text').textContent.trim();
+    const newUser = updateNewUserString.split(' ')[0];
+    socket.emit('updateUserData', newUser);
+})
 // Output the message to the DOM
 // Since the helper function turns the response into an object, we have to use the key value pairs to show the messages
 outputMessage = (message) => {
@@ -49,9 +69,29 @@ outputMessage = (message) => {
     document.querySelector('.chat-msg').appendChild(div);
 }
 
+welcomeMessage = (message) => {
+    const div = document.createElement('div');
+    div.classList.add('message');
+    div.innerHTML = `<p>${message.username} ${message.time}</p>
+    <p class='text welcome-text'>${message.text}</p>`
+    document.querySelector('.chat-msg').appendChild(div);
+}
+
+joinedMessage = (message) => {
+    const div = document.createElement('div');
+    div.classList.add('message');
+    div.innerHTML = `<p>${message.username} ${message.time}</p>
+    <p class='text joined-text'>${message.text}</p>`
+    document.querySelector('.chat-msg').appendChild(div);
+}
+
 outputCurrentUserList = (users) => {
     const div = document.createElement('div');
     div.classList.add('online');
-    div.innerHTML = `<p>${users}</p>`
+    div.innerHTML = `<p class="user">${users}</p>`
     document.querySelector('.online-users').appendChild(div);
+}
+
+reloadUserList = () => {
+    socket.emit('reloadUsers', joinedUser)
 }
