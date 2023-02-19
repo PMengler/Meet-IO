@@ -1,5 +1,3 @@
-const sequelize = require('../../config/connection');
-
 async function newFormHandler(event) {
   event.preventDefault();
 
@@ -8,9 +6,8 @@ async function newFormHandler(event) {
   const start_time = document.querySelector('#start-time').value;
   const end_time = document.querySelector('#end-time').value;
   const date = document.querySelector('#event-date').value;
-  const user_id = 2;
 
-  if (event_name && description && start_time && end_time && date && user_id) {
+  if (event_name && description && start_time && end_time && date) {
     const response = await fetch(`/api/events`, {
       method: 'post',
       body: JSON.stringify({
@@ -19,7 +16,6 @@ async function newFormHandler(event) {
         start_time,
         end_time,
         date,
-        user_id,
       }),
       headers: {
         'Content-Type': 'application/json',
