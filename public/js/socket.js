@@ -1,10 +1,16 @@
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-msg');
-
+const updateUserList = document.querySelector('.update-users');
 const joinedUser = document.getElementById('current-user').textContent.trim();
 
 const socket = io();
 
+
+socket.on('joinedMessage', (msg) => {
+    joinedMessage(msg);
+
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+})
 // Socket picks up on the backend server via 'message' tag and displays the message from our backend server
 socket.on('message', (msg) => {
     outputMessage(msg);
@@ -38,7 +44,10 @@ chatForm.addEventListener('submit', (event) => {
     event.target.elements.msg.focus();
 });
 
+updateUserList.addEventListener('click', () => {
+    socket.emit('joinedUser', joinedUser);
 
+})
 // Output the message to the DOM
 // Since the helper function turns the response into an object, we have to use the key value pairs to show the messages
 outputMessage = (message) => {
@@ -46,6 +55,14 @@ outputMessage = (message) => {
     div.classList.add('message');
     div.innerHTML = `<p>${message.username} ${message.time}</p>
     <p class='text'>${message.text}</p>`
+    document.querySelector('.chat-msg').appendChild(div);
+}
+
+joinedMessage = (message) => {
+    const div = document.createElement('div');
+    div.classList.add('message');
+    div.innerHTML = `<p>${message.username} ${message.time}</p>
+    <p class='text joined-text'>${message.text}</p>`
     document.querySelector('.chat-msg').appendChild(div);
 }
 
