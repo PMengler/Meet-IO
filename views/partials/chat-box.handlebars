@@ -1,17 +1,21 @@
-<div class="chat-container">
+<section class = "section">
+<div class = "chat-container box container">
+<span class = "title">
+{{!-- <div class="chat-container box"> --}}
   <header class="chat-header">
     <h1>Live Chat</h1>
   </header>
+  </span><br><br>
 
-  <main class="chat-main">
+  <main class="chat-main box">
     <div class="online-users">
-      <h2>Online Chatters <button type="button" id="update-users">Update Chatters</button></h2>
-      {{!-- {{username}} --}}
-
+      <h2>Online Chatters 
+      {{!-- <button type="button" id="update-users">Update Chatters</button> --}}
+      </h2>
+      <button class="button is-block is-primary is-medium is-rounded" id="update-users" type="submit">Update Chatters</button>
+      {{!-- <p>Chatting as {{username}} </p> --}}
+      <p>Chatting as: </p>
     {{!-- This will need to be dynamically created within the socket.js file just like the chat message div --}}
-
-
-
     </div>
     <div class="chat-msg">
       {{! This will hold the chat messages }}
@@ -21,11 +25,14 @@
   <div class="chat-submit-container">
     <form id="chat-form">
       <input type="text" placeholder="Chat Message" id="msg" />
-      <button class="btn">Send</button>
+      {{!-- <button class="btn">Send</button> --}}
+      <div>
+        <br />
+      <button class="button is-block is-primary is-medium is-rounded btn" type="submit">Send</button></div>
     </form>
   </div>
 </div>
-
+</section>
 {{!-- This gives us access to the front end library of socket.io --}}
 <script src="/socket.io/socket.io.js"></script>
 {{!-- Our homepage.js can now access the io methods in the script above --}}

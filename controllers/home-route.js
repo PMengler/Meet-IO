@@ -34,7 +34,8 @@ router.get('/homepage', (req, res) => {
 });
 
 router.get('/dashboard', (req, res) => {
-  res.render('dashboard', { loggedIn: req.session.loggedIn });
+  const username = req.session.username;
+  res.render('dashboard', { loggedIn: req.session.loggedIn, username: username, });
 });
 
 module.exports = router;
