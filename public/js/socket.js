@@ -1,16 +1,22 @@
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-msg');
-const updateUserList = document.querySelector('.update-users');
+const updateUserList = document.getElementById('update-users');
 const joinedUser = document.getElementById('current-user').textContent.trim();
 
 const socket = io();
 
+socket.on('welcomeMessage', (msg) => {
+    welcomeMessage(msg);
+
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+});
 
 socket.on('joinedMessage', (msg) => {
     joinedMessage(msg);
 
     chatMessages.scrollTop = chatMessages.scrollHeight;
-})
+});
+
 // Socket picks up on the backend server via 'message' tag and displays the message from our backend server
 socket.on('message', (msg) => {
     outputMessage(msg);
@@ -27,6 +33,10 @@ socket.on('loggedUsers', (users) => {
 });
 
 socket.emit('joinedUser', joinedUser)
+
+socket.on('printNewUser', (user) => {
+    outputCurrentUserList(user);
+})
 
 // Message submit
 chatForm.addEventListener('submit', (event) => {
@@ -45,8 +55,9 @@ chatForm.addEventListener('submit', (event) => {
 });
 
 updateUserList.addEventListener('click', () => {
-    socket.emit('joinedUser', joinedUser);
-
+    const updateNewUserString = document.querySelector('.joined-text').textContent.trim();
+    const newUser = updateNewUserString.split(' ')[0];
+    socket.emit('updateUserData', newUser);
 })
 // Output the message to the DOM
 // Since the helper function turns the response into an object, we have to use the key value pairs to show the messages
@@ -55,6 +66,14 @@ outputMessage = (message) => {
     div.classList.add('message');
     div.innerHTML = `<p>${message.username} ${message.time}</p>
     <p class='text'>${message.text}</p>`
+    document.querySelector('.chat-msg').appendChild(div);
+}
+
+welcomeMessage = (message) => {
+    const div = document.createElement('div');
+    div.classList.add('message');
+    div.innerHTML = `<p>${message.username} ${message.time}</p>
+    <p class='text welcome-text'>${message.text}</p>`
     document.querySelector('.chat-msg').appendChild(div);
 }
 
@@ -71,8 +90,6 @@ outputCurrentUserList = (users) => {
     div.classList.add('online');
     div.innerHTML = `<p class="user">${users}</p>`
     document.querySelector('.online-users').appendChild(div);
-
-    
 }
 
 reloadUserList = () => {

@@ -21,7 +21,7 @@ module.exports = function async(io) {
                 return
             }
         });
-        
+
         // This will allow for the users to be reprinted on refresh
         socket.on('reloadUsers', (user) => {
             socket.emit('loggedUsers', loggedUsers);
@@ -33,9 +33,13 @@ module.exports = function async(io) {
             socket.broadcast.emit('joinedMessage', messageFormat(chatBot, `${user} has joined the live chat`));
         })
 
+        socket.on('updateUserData', (user) => {
+            socket.emit('printNewUser', user);
+        })
+
         // This will broadcast when a user disconnects
         socket.on('disconnect', () => {
-                io.emit('message', messageFormat(chatBot, `A user has left the live chat`));
+            io.emit('message', messageFormat(chatBot, `A user has left the live chat`));
         });
 
         // Listening for the chatMessage
