@@ -1,33 +1,40 @@
+const sequelize = require('../../config/connection');
+
 async function newFormHandler(event) {
   event.preventDefault();
 
-  const title = document.querySelector('input[name="event-title"]').value;
-  const content = document.querySelector('input[name="content"]').value;
-  const start_time = document.querySelector('input[name="start-time"]').value;
-  const end_time = document.querySelector('input[name="end-time"]').value;
-  const date = document.querySelector('input[name="event-date"]').value;
+  const event_name = document.querySelector('#event-title').value.trim();
+  const description = document.querySelector('#content').value.trim();
+  const start_time = document.querySelector('#start-time').value;
+  const end_time = document.querySelector('#end-time').value;
+  const date = document.querySelector('#event-date').value;
+  const user_id = 2;
 
-  const response = await fetch(`/api/events`, {
-    method: 'POST',
-    body: JSON.stringify({
-      title,
-      content,
-      start_time,
-      end_time,
-      date,
-    }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  if (event_name && description && start_time && end_time && date && user_id) {
+    const response = await fetch(`/api/events`, {
+      method: 'post',
+      body: JSON.stringify({
+        event_name,
+        description,
+        start_time,
+        end_time,
+        date,
+        user_id,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-  if (response.ok) {
-    document.location.replace('/dashboard');
-  } else {
-    alert(response.statusText);
+    if (response.ok) {
+      console.log(response);
+      document.location.replace('/api/events');
+    } else {
+      alert(response.statusText);
+    }
   }
 }
 
 document
-  .querySelector('#new-event-form')
-  .addEventListener('submit', newFormHandler);
+  .querySelector('.new-event-button')
+  .addEventListener('click', newFormHandler);
