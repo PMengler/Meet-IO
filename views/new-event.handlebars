@@ -35,5 +35,17 @@
     Submit
   </button>
 </form>
+<button type="submit" id="new-event-submit" class="btn new-event-button">
+  <a class="link" href="">Submit</a>
+</button>
 
 <script src="/js/add-event.js"></script>
+{{!-- need to update script to run from file --}}
+<script>
+    const burgerIcon = document.querySelector('#burger');
+    const navbarMenu = document.querySelector('#nav-links');
+
+    burgerIcon.addEventListener('click', () => {
+        navbarMenu.classList.toggle('is-active');
+    });
+</script>

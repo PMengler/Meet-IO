@@ -1,28 +1,47 @@
-<section class="hero is-primary is-medium">
+{{!-- <section class="hero is-primary is-medium"> --}}
+<section class="hero is-light is-medium">
   <div class="hero-body has-text-centered">
     <div class="container">
       <h1 class="is-size-1 has-text-weight-bold">meetIO {{{get_emoji}}}</h1>
       <h2 class="page-title is-size-3">Login</h2>
 
-       <form class="form" id="login-form">
+      <form class="form" id="login-form">
       <div class="form-group">
-        <label for="username-login">Username:</label>
-        <input class="form-input form control" type="text" id="username-login" autofocus="true" />
+        {{!-- <label for="username-login">Username:</label> --}}
+        {{!-- <input class="form-input form control" type="text" id="username-login" autofocus="true" /> --}}
+        <input class="input is-medium is-rounded" style="width:50vw" type="text" placeholder="username" autocomplete="username" id="username-login" required />
       </div>
       <div class="form-group">
-        <label for="password-login">Password:</label>
-        <input class="form-input form-control" type="password" id="password-login" autofocus="true" />
+        {{!-- <label for="password-login">Password:</label> --}}
+        {{!-- <input class="form-input form-control" type="password" id="password-login" autofocus="true" /> --}}
+        <input class="input is-medium is-rounded" style="width:50vw" type="password" placeholder="**********" autocomplete="current-password" id="password-login" required />
       </div>
+      <div class="level-item has-text-centered">
       <div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        {{!-- <button type="submit" class="btn btn-primary">Login</button> --}}
+        <button class="button is-block is-fullwidth is-primary is-medium is-rounded" type="submit">
+              Login
+            </button>
       </div>
+      </div>
+      <div class="level-item has-text-centered">
       <div>
         <p>Don't have an account yet? Sign up here!</p>
-        <button class="btn btn-primary has-text-centered"><a href="/signup">Signup</a></button>
+        {{!-- <button class="btn btn-primary has-text-centered"><a href="/signup">Signup</a></button> --}}
+        <button class="button is-block is-fullwidth is-primary is-medium is-rounded" type="submit"><a href="/signup">Signup</a></button>
       </div>
     </form>
-    </div> 
+      </div> 
 </section>
 
 
 <script src="/js/login.js"></script>
+{{!-- need to update script to run from file --}}
+<script>
+    const burgerIcon = document.querySelector('#burger');
+    const navbarMenu = document.querySelector('#nav-links');
+
+    burgerIcon.addEventListener('click', () => {
+        navbarMenu.classList.toggle('is-active');
+    });
+</script>
