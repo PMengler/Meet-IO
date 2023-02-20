@@ -1,9 +1,9 @@
 {{!-- <section class="hero is-primary is-medium"> --}}
-<section class="hero is-light is-medium">
+<section class="hero is-light is-medium" id="background-main">
   <div class="hero-body has-text-centered">
     <div class="container">
-      <h1 class="is-size-1 has-text-weight-bold">meetIO {{{get_emoji}}}</h1>
-      <h2 class="page-title is-size-3">Login</h2>
+      <h1 class="is-size-1 has-text-weight-bold has-text-white">meetIO {{{get_emoji}}}</h1>
+      <h2 class="page-title is-size-3 has-text-white has-text-weight-bold">Login</h2>
 
       <form class="form" id="login-form">
       <div class="form-group">
@@ -26,14 +26,20 @@
       </div>
       <div class="level-item has-text-centered">
       <div>
-        <p>Don't have an account yet? Sign up here!</p>
+        <p class="has-text-white has-text-weight-bold">Don't have an account yet? Sign up here!</p>
         {{!-- <button class="btn btn-primary has-text-centered"><a href="/signup">Signup</a></button> --}}
         <button class="button is-block is-fullwidth is-primary is-medium is-rounded" type="submit"><a href="/signup">Signup</a></button>
       </div>
     </form>
       </div> 
 </section>
-
+    <footer class="footer has-background-light is-fixed-bottom">
+        <div class="content has-text-centered">
+          <p>
+            <strong>MEETIO</strong> by <a href="https://github.com/PMengler/Meet-IO" class="has-text-grey-dark">Project#2 Group Five</a>
+          </p>
+        </div>
+      </footer>
 
 <script src="/js/login.js"></script>
 {{!-- need to update script to run from file --}}
