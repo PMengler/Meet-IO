@@ -11,3 +11,10 @@
 #navbar-item:active {
     background-color:#f1d9b7;
 }
+
+#background-main {
+    background-image: url('../images/meetup_2.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
+  }
