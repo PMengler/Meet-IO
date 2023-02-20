@@ -27,15 +27,18 @@ router.get('/calendar', (req, res) => {
 
 router.get('/homepage', (req, res) => {
   const username = req.session.username;
-  res.render('homepage', { 
+  res.render('homepage', {
     loggedIn: req.session.loggedIn,
     username: username,
-   });
+  });
 });
 
 router.get('/dashboard', (req, res) => {
   const username = req.session.username;
-  res.render('dashboard', { loggedIn: req.session.loggedIn, username: username, });
+  res.render('dashboard', {
+    loggedIn: req.session.loggedIn,
+    username: username,
+  });
 });
 
 module.exports = router;
