@@ -1,0 +1,21 @@
+<section class = "section">
+<div class = "events-container box container">
+<span class = "title">
+  <header class="chat-header">
+    <h1>Your Upcoming Events:</h1>
+  </header>
+  </span><br><br>
+
+  <main class="box" id="event-list">
+  <ul>
+    {{#each events}}
+      <li>
+        {{!-- <h1>{{this.event_name}}</h1>
+        <p>Date: {{this.date}}</p>
+        <p>Time: {{this.start_time}} - {{this.end_time}}</p> --}}
+      </li>
+    {{/each}}
+  </ul>
+  </main>
+</div>
+</section>
