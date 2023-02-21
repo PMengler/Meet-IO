@@ -18,3 +18,7 @@
     background-attachment: fixed;  
     background-size: cover;
   }
+
+  #main{
+    height:100vh;
+  }
