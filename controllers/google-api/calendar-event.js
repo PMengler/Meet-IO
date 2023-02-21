@@ -1,5 +1,5 @@
 // Create a calendar event
-
+import dayjs from 'dayjs';
 const event = {
     'summary': '',
     'location': '',
@@ -32,6 +32,9 @@ const event = {
     calendarId: 'primary',
     resource: calendar.event,
     description: '',
+    start : {
+      dateTime: new Date
+    }
   }, function(err, event) {
     if (err) {
       console.log('There was an error contacting the Calendar service: ' + err);
