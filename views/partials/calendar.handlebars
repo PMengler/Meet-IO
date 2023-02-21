@@ -1,18 +1,18 @@
-    <h2 class="page-title is-size-1">  {{{get_emoji}}}</h2>
-    <div class="container block">
+<h2 class="page-title is-size-1"> {{{get_emoji}}}</h2>
+<div class="container.is-max-desktop">
     <div class="card">
         <h3 class="card-header is-justify-content-space-around is-size-1" id="monthAndYear"></h3>
         <table class="table is-bordered is-striped is-hoverable is-fullwidth is-size-1" id="calendar">
             <thead>
-            <tr>
-                <th>Sun</th>
-                <th>Mon</th>
-                <th>Tue</th>
-                <th>Wed</th>
-                <th>Thu</th>
-                <th>Fri</th>
-                <th>Sat</th>
-            </tr>
+                <tr>
+                    <th>Sun</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                </tr>
             </thead>
             <tbody id="calendar-body">
             </tbody>
@@ -24,9 +24,9 @@
 
             <button class="button is-outlined is-primary" id="next" onclick="next()">Next</button>
         </div>
-        <br/>
+        <br />
         <div class="field is-grouped is-grouped-centered">
-            <div class=""> 
+            <div class="">
             </div>
 
             <div class="select is-primary is-rounded is-medium">
@@ -50,8 +50,8 @@
 
             <div class="select is-primary is-rounded is-medium">
                 <select name="year" id="year" onchange="jump()">
-                <option value=2022>2022</option>
-                <option value=2023>2023</option>
+                    <option value=2022>2022</option>
+                    <option value=2023>2023</option>
                 </select>
             </div>
         </div>
@@ -60,5 +60,5 @@
 <script src="./js/scripts.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
