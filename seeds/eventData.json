@@ -12,7 +12,7 @@
         "description": "I will be at work.",
         "start_time": "09:00:00",
         "end_time": "18:00:00",
-        "date": "2023-02-018",
+        "date": "2023-02-019",
         "user_id": 2
     },
     {
@@ -20,7 +20,7 @@
         "description": "I will be at work.",
         "start_time": "09:00:00",
         "end_time": "18:00:00",
-        "date": "2023-02-018",
+        "date": "2023-02-020",
         "user_id": 3
     }
 ]
