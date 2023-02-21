@@ -137,3 +137,61 @@ const navbarMenu = document.querySelector('#nav-links');
 burgerIcon.addEventListener('click', () => {
   navbarMenu.classList.toggle('is-active');
 });
+
+//sql data
+
+//doesn't work
+// const sequelize = require('../../config/connection');
+
+// sequelize.connect(function(err) {
+//   if (err) throw err;
+//   con.query("SELECT * FROM event", function (err, result, fields) {
+//     if (err) throw err;
+//     console.log(result);
+//   });
+// });
+
+//doesn't work
+
+// const sequelize = require('../../config/connection');
+
+// sequelize.authenticate()
+//   .then(() => {
+//     console.log('Connection has been established successfully.');
+//     sequelize.query('SELECT * FROM event')
+//       .then(results => {
+//         console.log(results);
+//       })
+//       .catch(err => {
+//         console.error('Error executing query: ', err);
+//       });
+//   })
+//   .catch(err => {
+//     console.error('Unable to connect to the database:', err);
+//   });
+
+fetch('/api/events')
+  .then(response => response.json())
+  .then(data => {
+    const eventList = document.getElementById('event-list');
+    // Sort events by date in ascending order
+    data.sort((a, b) => new Date(a.date) - new Date(b.date));
+    // Reverse the order of events to show the newest events at the bottom
+    data.reverse();
+    // Only show the 5 upcoming events
+    const upcomingEvents = data.slice(0, 5);
+    upcomingEvents.forEach(event => {
+      // Check if the event date is in the future
+      if (new Date(event.date) >= new Date()) {
+        const eventDiv = document.createElement('div');
+        const eventDate = moment(event.date).format('MMMM Do YYYY');
+        eventDiv.innerHTML = `
+          <h1 class="is-size-3 has-text-link">${event.event_name}</h1>
+          <p>Date: ${eventDate}</p>
+        `;
+        // Append each event to the top of the event list
+        eventList.insertBefore(eventDiv, eventList.firstChild);
+      }
+    });
+  })
+  .catch(error => console.error(error));
