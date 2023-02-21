@@ -4,6 +4,7 @@ let currentMonth = today.getMonth();
 let currentYear = today.getFullYear();
 let selectYear = document.getElementById('year');
 let selectMonth = document.getElementById('month');
+// let selectDay = document.querySelector('td').textContent;
 
 let months = [
   'Jan',
@@ -89,6 +90,45 @@ function showCalendar(month, year) {
     tbl.appendChild(row); // appending each row into calendar body.
   }
 }
+
+async function renderEvents() {
+  const response = await fetch('/api/events', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+  });
+  // const dateOfEvent = eventsData[0].date;
+  const eventsData = await response.json();
+  console.log(eventsData);
+
+  for (let j = 0; j < eventsData.length; j++) {
+    const dateOfEvent = eventsData[j].date;
+
+    for (let i = 0; i < 31; i++) {
+      const calendarDay = document.querySelectorAll('td');
+      const calendarDate =
+        selectYear.value +
+        '-' +
+        '0' +
+        (parseInt(selectMonth.value) + 1) +
+        '-' +
+        calendarDay[i].textContent +
+        'T00:00:00.000Z';
+
+      if (calendarDate == dateOfEvent) {
+        console.log(true);
+        calendarDay[i].classList.add('is-info');
+      } else {
+        console.log(false);
+      }
+      console.log(calendarDate);
+    }
+  }
+}
+
+renderEvents();
 
 //mobile menu
 const burgerIcon = document.querySelector('#burger');
