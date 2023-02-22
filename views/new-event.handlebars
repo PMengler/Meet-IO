@@ -31,17 +31,23 @@
     type="text"
     placeholder="Content"
   />
-<button type="submit" id="new-event-submit" class="btn new-event-button button is-block is-primary is-medium is-rounded" onclick="window.location.href='/homepage';">
+<button type="submit" id="new-event-submit" class="btn new-event-button button is-block is-primary is-medium is-rounded">
   Submit
 </button>
 </form>
 <script src="/js/add-event.js"></script>
 {{!-- need to update script to run from file --}}
 <script>
+    const button = document.getElementById("new-event-submit");
     const burgerIcon = document.querySelector('#burger');
     const navbarMenu = document.querySelector('#nav-links');
 
     burgerIcon.addEventListener('click', () => {
         navbarMenu.classList.toggle('is-active');
     });
+
+    button.addEventListener("click", function() {
+    // redirect the user to the homepage
+     window.location.href = "/homepage";
+});
 </script>
