@@ -118,12 +118,12 @@ async function renderEvents() {
         'T00:00:00.000Z';
 
       if (calendarDate == dateOfEvent) {
-        console.log(true);
+        // console.log(true);
         calendarDay[i].classList.add('is-info');
       } else {
-        console.log(false);
+        // console.log(false);
       }
-      console.log(calendarDate);
+      // console.log(calendarDate);
     }
   }
 }
@@ -171,8 +171,8 @@ burgerIcon.addEventListener('click', () => {
 //   });
 
 fetch('/api/events')
-  .then(response => response.json())
-  .then(data => {
+  .then((response) => response.json())
+  .then((data) => {
     const eventList = document.getElementById('event-list');
     // Sort events by date in ascending order
     data.sort((a, b) => new Date(a.date) - new Date(b.date));
@@ -180,7 +180,7 @@ fetch('/api/events')
     data.reverse();
     // Only show the 5 upcoming events
     const upcomingEvents = data.slice(0, 5);
-    upcomingEvents.forEach(event => {
+    upcomingEvents.forEach((event) => {
       // Check if the event date is in the future
       if (new Date(event.date) >= new Date()) {
         const eventDiv = document.createElement('div');
@@ -194,4 +194,4 @@ fetch('/api/events')
       }
     });
   })
-  .catch(error => console.error(error));
+  .catch((error) => console.error(error));
