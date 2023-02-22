@@ -19,6 +19,19 @@
     background-size: cover;
   }
 
+  #background-main1 {
+    background-image: url('../images/meetup_1.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
+  }
+
   #main{
     height:100vh;
+  }
+
+  @media (max-width: 1100px) {
+    #calendar-container {
+      display: none;
+    }
   }

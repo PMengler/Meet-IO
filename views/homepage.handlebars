@@ -3,14 +3,21 @@
     <h2 class="is-size-1 has-text-weight-bold">Welcome: <span id="current-user">{{username}}</span>
       </h2>
   </div>
-<div>
-  {{>calendar }}
-  {{>upcoming-events}}
-  <div> 
-      {{#each events as |events|}}
-      {{> events-details}}
-      {{/each}}
-  </div>
+<section>
+<div style="display: none">
+{{>calendar }}
+    <div>
+    {{#if events.length}}
+
+        {{#each events as |event|}}
+        {{> events-details event}}
+        {{/each}}
+
+    {{/if}}
+    </div>
 </div>
-  {{> chat-box}}
+<div id="background-main1">
+{{>full-event-list}}
+</div>
+</section>
  </body>
