@@ -14,7 +14,7 @@ async function loginFormHandler(event) {
     if (response.ok) {
       document.location.replace('/homepage');
     } else {
-      alert(response.statusText);
+      alert('Incorrect username or password!');
     }
   }
 }
