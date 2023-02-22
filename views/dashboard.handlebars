@@ -10,7 +10,7 @@
 
 
 <section>
-<div>
+<div id="calendar-container">
 {{>calendar }}
     <div>
     {{#if events.length}}
@@ -22,6 +22,7 @@
     {{/if}}
     </div>
 </div>
+{{>upcoming-events}}
 </section>
 
 {{>chat-box }}

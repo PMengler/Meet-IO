@@ -187,11 +187,37 @@ fetch('/api/events')
         const eventDate = moment(event.date).format('MMMM Do YYYY');
         eventDiv.innerHTML = `
           <h1 class="is-size-3 has-text-link">${event.event_name}</h1>
-          <p>Date: ${eventDate}</p>
+          <p>${event.description}</p>
+          <p>${event.start_time} - ${event.end_time}</p>
+          <p>${eventDate}</p>
         `;
         // Append each event to the top of the event list
         eventList.insertBefore(eventDiv, eventList.firstChild);
       }
+    });
+  })
+  .catch((error) => console.error(error));
+
+
+  fetch('/api/events')
+  .then((response) => response.json())
+  .then((data) => {
+    const eventList = document.getElementById('full-event-list');
+    // Sort events by date in ascending order
+    data.sort((a, b) => new Date(a.date) - new Date(b.date));
+    // Reverse the order of events to show the newest events at the bottom
+    data.reverse();
+    data.forEach((event) => {
+      const eventDiv = document.createElement('div');
+      const eventDate = moment(event.date).format('MMMM Do YYYY');
+      eventDiv.innerHTML = `
+        <h1 class="is-size-3 has-text-link">${event.user.username} - ${event.event_name}</h1>
+        <p>${event.description}</p>
+        <p>${event.start_time} - ${event.end_time}</p>
+        <p>${eventDate}</p>
+      `;
+      // Append each event to the top of the event list
+      eventList.insertBefore(eventDiv, eventList.firstChild);
     });
   })
   .catch((error) => console.error(error));
