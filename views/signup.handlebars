@@ -3,36 +3,37 @@
     <div class="column is-half">
       <div class="hero-body">
         <div class="container">
-          <h1 class="page-title is-size-1">Sign Up</h1>
-          <div class="field">
-            <label class="label">Username</label>
-            <div class="control has-icons-left">
-              <input class="input" type="text" placeholder="pick a username">
+          <form id="signup-form">
+            <h1 class="page-title is-size-1">Sign Up</h1>
+            <div class="field">
+              <label class="label">Username</label>
+              <div class="control has-icons-left">
+                <input class="input" id="username-signup" type="text" placeholder="pick a username">
+                <span class="icon is-small is-left">
+                <i class="fa-solid fa-user"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Email</label>
+              <div class="control has-icons-left">
+                <input class="input" id="email-signup"type="email" placeholder="email">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-envelope"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Password</label>
+              <div class="control has-icons-left">
+              <input class="input" id="password-signup" type="text" placeholder="choose a password" />
               <span class="icon is-small is-left">
-              <i class="fa-solid fa-user"></i>
+                <i class="fas fa-lock"></i>
               </span>
             </div>
-          </div>
-          <div class="field">
-            <label class="label">Email</label>
-            <div class="control has-icons-left">
-              <input class="input" type="email" placeholder="email">
-              <span class="icon is-small is-left">
-                <i class="fas fa-envelope"></i>
-              </span>
+            <div class="field">
+              <button class="button is-medium mt-5" id="signup-form" type="submit">signup</button>
             </div>
-          </div>
-          <div class="field">
-            <label class="label">Password</label>
-            <div class="control has-icons-left">
-            <input class="input" type="text" placeholder="choose a password" />
-            <span class="icon is-small is-left">
-              <i class="fas fa-lock"></i>
-            </span>
-          </div>
-          <div class="field">
-            <button class="button is-medium mt-5" type="submit">signup</button>
-          </div>
           </form>
         </div>
       </div>
