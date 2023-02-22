@@ -1,5 +1,13 @@
 // Create a calendar event
+// Import dayjs
 import dayjs from 'dayjs';
+const dayjs = require('dayjs')
+dayjs().format()
+// Assumes users timezone
+dayjs.extend(utc)
+dayjs.extend(timezone)
+dayjs.tz.guess()
+
 const event = {
     'summary': '',
     'location': '',
@@ -33,7 +41,7 @@ const event = {
     resource: calendar.event,
     description: '',
     start : {
-      dateTime: new Date
+      dateTime: new Date().setSeconds(24 * 60 * 60),
     }
   }, function(err, event) {
     if (err) {
