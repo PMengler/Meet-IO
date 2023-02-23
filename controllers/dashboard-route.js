@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { User, Event } = require('../models');
-const withAuth = require('../utils/auth');
+const mustAuth = require('../utils/auth');
 
-router.get('/', withAuth, (req, res) => {
+router.get('/', mustAuth, (req, res) => {
   Event.findAll({
     where: {
       user_id: req.session.user_id,
@@ -33,7 +33,7 @@ router.get('/', withAuth, (req, res) => {
     });
 });
 
-router.get('/edit/:id', withAuth, (req, res) => {
+router.get('/edit/:id', mustAuth, (req, res) => {
   Event.findOne({
     where: {
       id: req.params.id,
@@ -70,6 +70,10 @@ router.get('/edit/:id', withAuth, (req, res) => {
 
 router.get('/new', (req, res) => {
   res.render('new-event');
+});
+
+router.get('/delete', (req, res) => {
+  res.render('delete');
 });
 
 module.exports = router;
