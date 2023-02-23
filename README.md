@@ -15,7 +15,7 @@ Github pages hosting: https://github.com/PMengler/Meet-IO
 
 ## Usage
 
-![alt text](screenshot placeholder)
+![alt text](https://user-images.githubusercontent.com/114950259/220997302-99c7f5ea-8cd6-4e41-aeb0-6c05364b12b4.png)
 
 
 ## Credits
