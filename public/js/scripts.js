@@ -128,6 +128,8 @@ async function renderEvents() {
   }
 }
 
+document.querySelector('#next').addEventListener('click', renderEvents);
+document.querySelector('#previous').addEventListener('click', renderEvents);
 renderEvents();
 
 //mobile menu
