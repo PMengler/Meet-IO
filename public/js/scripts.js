@@ -128,6 +128,8 @@ async function renderEvents() {
   }
 }
 
+document.querySelector('#next').addEventListener('click', renderEvents);
+document.querySelector('#previous').addEventListener('click', renderEvents);
 renderEvents();
 
 //mobile menu
@@ -198,7 +200,7 @@ fetch('/api/events')
   })
   .catch((error) => console.error(error));
 
-  fetch('/api/events')
+fetch('/api/events')
   .then((response) => response.json())
   .then((data) => {
     const eventList = document.getElementById('full-event-list');

@@ -72,8 +72,4 @@ router.get('/new', (req, res) => {
   res.render('new-event');
 });
 
-router.get('/delete', (req, res) => {
-  res.render('delete');
-});
-
 module.exports = router;
