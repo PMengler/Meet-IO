@@ -198,7 +198,7 @@ fetch('/api/events')
   })
   .catch((error) => console.error(error));
 
-fetch('/api/events')
+  fetch('/api/events')
   .then((response) => response.json())
   .then((data) => {
     const eventList = document.getElementById('full-event-list');
@@ -214,9 +214,25 @@ fetch('/api/events')
         <p>${event.description}</p>
         <p>${event.start_time} - ${event.end_time}</p>
         <p>${eventDate}</p>
+        <button class="delete-button btn button is-block is-primary is-medium is-rounded" data-event-id="${event.id}">Delete</button>
       `;
       // Append each event to the top of the event list
       eventList.insertBefore(eventDiv, eventList.firstChild);
+
+      // Add event listener to delete button
+      const deleteButton = eventDiv.querySelector('.delete-button');
+      deleteButton.addEventListener('click', (event) => {
+        const eventId = event.target.dataset.eventId;
+        fetch(`/api/events/${eventId}`, {
+          method: 'DELETE',
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            // Remove the deleted event from the DOM
+            eventDiv.remove();
+          })
+          .catch((error) => console.error(error));
+      });
     });
   })
   .catch((error) => console.error(error));
